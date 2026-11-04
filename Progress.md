@@ -13,7 +13,7 @@
 
 
 ## 2. Theoretical &amp; Mathematical Checkpoints (Self-Study) 
-- [ ] ECG Morphology: P-wave (atrial depol), QRS (ventricular depol), T-wave (ventricular repol) 
+- [x] ECG Morphology: P-wave (atrial depol), QRS (ventricular depol), T-wave (ventricular repol) 
 - [ ] Signal standardisation formula: z = (x - mu) / sigma 
 - [ ] MIT-BIH 8 classes mapped to IDs 1-8 
 - [ ] Beat hold-out (data leakage risk) vs. Patient hold-out (leave patients 104, 113, 119, 208, 210) 
