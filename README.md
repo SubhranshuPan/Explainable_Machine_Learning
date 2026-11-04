@@ -55,7 +55,7 @@
 ## 4. Group Progress & Work Distribution Log 
 | Member | Assigned Sub-Task | Status | Key Results / Observations | 
 | :--- | :--- | :--- | :--- | 
-| [Som] | Math formulation &amp; PFI function | In Progress | Derived PermFIT formula and 11-segment slicing | 
+| Som | Math formulation &amp; PFI function | In Progress | Derived PermFIT formula and 11-segment slicing | 
 | [Peer 1] | WFDB parsing &amp; R-peak centering | Pending | | 
 | [Peer 2] | Beat &amp; Patient split CSV pipelines | Pending | | 
 | [Peer 3] | SVM implementation &amp; tuning | Pending | | 
