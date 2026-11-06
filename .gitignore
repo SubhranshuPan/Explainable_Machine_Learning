@@ -1,0 +1,13 @@
+# Python environment
+.venv/
+__pycache__/
+.ipynb_checkpoints/
+
+# Raw MIT-BIH data (download from https://physionet.org/content/mitdb/1.0.0/)
+mitbih/
+
+# Generated data (recreate by running the notebooks)
+data/
+*.csv
+
+.DS_Store

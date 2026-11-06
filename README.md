@@ -25,11 +25,12 @@
 ## 3. Implementation & Experimental Milestones 
 
 ### Phase A: Data Ingestion &amp; Preprocessing 
-- [ ] Download MIT-BIH records via `wfdb` into `mitbih/` directory 
-- [ ] Extract dual-channel beats, center R-peaks at index 137 (length 275) 
-- [ ] Generate class histogram showing initial imbalance 
-- [ ] Resample training set with replacement to 3,989 samples/class 
-- [ ] Create `train_beats.csv`, `test_beats.csv`, `train_patients.csv`, `test_patients.csv` 
+- [x] Download MIT-BIH records into `mitbih/` directory (48 records, SHA256-verified)
+- [x] Extract dual-channel beats, center R-peaks at index 137 (length 275) → 149,768 labelled beats
+- [x] Generate class histogram showing initial imbalance 
+- [x] Resample training set with replacement → 3,874 samples/class (beat split), 4,423 samples/class (patient split)
+- [x] Create `train_beats.csv`, `test_beats.csv`, `train_patients.csv`, `test_patients.csv` 
+- [x] Fixed patient-split bug: original code duplicated rows ~5× and leaked the test patients into training (handout's 25,789/class)
 
 ### Phase B: Model Training & Evaluation 
 - [ ] Model 1 (SVM): Beat Hold-Out (Acc, Prec, Rec, F1, Confusion Matrix) 
@@ -61,3 +62,29 @@
 | [Peer 3] | SVM implementation &amp; tuning | Pending | | 
 | [Peer 4] | Second classifier (CNN / RF) | Pending | | 
 | [Peer 5] | Clustering &amp; Report drafting | Pending | |
+
+---
+
+## 5. How to reproduce
+
+```bash
+# 1. Environment (Python 3.14 tested)
+python3 -m venv .venv && .venv/bin/pip install -r requirements.txt
+
+# 2. Data: download https://physionet.org/content/mitdb/1.0.0/ and put the
+#    48 records' .dat / .hea / .atr files in ./mitbih/
+
+# 3. Run the notebooks in order (outputs go to data/ and figures/)
+cd notebooks
+../.venv/bin/jupyter nbconvert --to notebook --execute --inplace data_preprocess.ipynb
+../.venv/bin/jupyter nbconvert --to notebook --execute --inplace data_split_resample.ipynb
+../.venv/bin/jupyter nbconvert --to notebook --execute --inplace classification.ipynb
+```
+
+| Folder / file | Contents |
+| :--- | :--- |
+| `notebooks/data_preprocess.ipynb` | Raw MIT-BIH → one standardised 275-sample beat per row (`data/all_data.csv`) |
+| `notebooks/data_split_resample.ipynb` | Beat hold-out (75/25) and patient hold-out splits, class re-sampling |
+| `notebooks/classification.ipynb` | SVM and Random Forest on both splits: accuracy, precision, recall, F1, confusion matrices |
+| `src/ecg_utils.py` | Shared loading + evaluation functions |
+| `figures/` | All figures used in the report |

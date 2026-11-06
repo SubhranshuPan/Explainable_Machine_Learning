@@ -1,0 +1,140 @@
+{
+  ".claude/settings.json": {
+    "mtime": 1793917292.748984,
+    "seen": 1793918920.8553832,
+    "ast_hash": "2b03eaffd6cd0874f0c3ce1d91ef4e72",
+    "semantic_hash": "2b03eaffd6cd0874f0c3ce1d91ef4e72"
+  },
+  "src/ecg_utils.py": {
+    "mtime": 1793917087.43686,
+    "seen": 1793918920.855387,
+    "ast_hash": "5692c88b758e4a0115590174718528f3",
+    "semantic_hash": "5692c88b758e4a0115590174718528f3"
+  },
+  "CLAUDE.md": {
+    "mtime": 1793917292.7487402,
+    "seen": 1793918920.8553889,
+    "ast_hash": "67d88e9d0760c3ba54c75dfd9551c1c5",
+    "semantic_hash": "67d88e9d0760c3ba54c75dfd9551c1c5"
+  },
+  "README.md": {
+    "mtime": 1793917202.5349896,
+    "seen": 1793918920.8553898,
+    "ast_hash": "f22a59289455ffd7b4c7581cb2c096fc",
+    "semantic_hash": "f22a59289455ffd7b4c7581cb2c096fc"
+  },
+  "requirements.txt": {
+    "mtime": 1793916967.3429494,
+    "seen": 1793918920.855391,
+    "ast_hash": "932700182d36c3260e1872244c7bd805",
+    "semantic_hash": "932700182d36c3260e1872244c7bd805"
+  },
+  "ExplainabilityMachineLearning (2).pdf": {
+    "mtime": 1793806205.989961,
+    "seen": 1793918920.855392,
+    "ast_hash": "359634e67fc02f3046a81fb544ef55ee",
+    "semantic_hash": "359634e67fc02f3046a81fb544ef55ee"
+  },
+  "ML_interpretability-part2 (1).pdf": {
+    "mtime": 1793806216.7880697,
+    "seen": 1793918920.855393,
+    "ast_hash": "ed190e18727241c64eb7a0cf61e2b53d",
+    "semantic_hash": "ed190e18727241c64eb7a0cf61e2b53d"
+  },
+  "Marking sheet.pdf": {
+    "mtime": 1793806289.487759,
+    "seen": 1793918920.855393,
+    "ast_hash": "4acb12fb3ccbc06247e17789a63c1d51",
+    "semantic_hash": "4acb12fb3ccbc06247e17789a63c1d51"
+  },
+  "Report template.pdf": {
+    "mtime": 1793806267.8871112,
+    "seen": 1793918920.855393,
+    "ast_hash": "d50c9e06b59c26824000363fc6530705",
+    "semantic_hash": "d50c9e06b59c26824000363fc6530705"
+  },
+  "explainability_machineLearning.pdf": {
+    "mtime": 1793806222.815243,
+    "seen": 1793918920.8553941,
+    "ast_hash": "38ff6cc1d78dc26df7ca8bf5e82ba9b6",
+    "semantic_hash": "38ff6cc1d78dc26df7ca8bf5e82ba9b6"
+  },
+  "figures/cm_random_forest_beat.png": {
+    "mtime": 1793917272.2240634,
+    "seen": 1793918920.8553941,
+    "ast_hash": "3b244bb57d2cd78f7dce5150b06ea8cf",
+    "semantic_hash": "3b244bb57d2cd78f7dce5150b06ea8cf"
+  },
+  "figures/cm_random_forest_patient.png": {
+    "mtime": 1793917292.2439108,
+    "seen": 1793918920.855395,
+    "ast_hash": "1a1c78997b16c41085f0db8e84deccce",
+    "semantic_hash": "1a1c78997b16c41085f0db8e84deccce"
+  },
+  "figures/cm_svm_beat.png": {
+    "mtime": 1793917245.1553473,
+    "seen": 1793918920.855396,
+    "ast_hash": "e45e80472f13618b6c24ec4269dc1c06",
+    "semantic_hash": "e45e80472f13618b6c24ec4269dc1c06"
+  },
+  "figures/cm_svm_patient.png": {
+    "mtime": 1793917255.1751027,
+    "seen": 1793918920.855396,
+    "ast_hash": "008106676b59804ed6e0356ff635adc9",
+    "semantic_hash": "008106676b59804ed6e0356ff635adc9"
+  },
+  "figures/counts_all_data.png": {
+    "mtime": 1793917157.2064216,
+    "seen": 1793918920.8553972,
+    "ast_hash": "b39cf9695c0fd9a3d784f310ddd2f954",
+    "semantic_hash": "b39cf9695c0fd9a3d784f310ddd2f954"
+  },
+  "figures/counts_test_beats.png": {
+    "mtime": 1793917157.413206,
+    "seen": 1793918920.8553972,
+    "ast_hash": "363c3c0c96919d9e772e965b70172370",
+    "semantic_hash": "363c3c0c96919d9e772e965b70172370"
+  },
+  "figures/counts_test_patients.png": {
+    "mtime": 1793917157.5856977,
+    "seen": 1793918920.8553972,
+    "ast_hash": "9fffd89201a4f422828b4f3a274dc061",
+    "semantic_hash": "9fffd89201a4f422828b4f3a274dc061"
+  },
+  "figures/counts_train_beats.png": {
+    "mtime": 1793917157.3107884,
+    "seen": 1793918920.855398,
+    "ast_hash": "7b2c789e9888a4d40513a6d94b10c1f2",
+    "semantic_hash": "7b2c789e9888a4d40513a6d94b10c1f2"
+  },
+  "figures/counts_train_patients.png": {
+    "mtime": 1793917157.5057914,
+    "seen": 1793918920.855398,
+    "ast_hash": "082b40378b875d3b3f2ce135bb08285d",
+    "semantic_hash": "082b40378b875d3b3f2ce135bb08285d"
+  },
+  "figures/ecg_data_beats_per_class.jpg": {
+    "mtime": 1793917112.147639,
+    "seen": 1793918920.855399,
+    "ast_hash": "e47536a287115c18b3adca222bcbd783",
+    "semantic_hash": "e47536a287115c18b3adca222bcbd783"
+  },
+  "figures/ecg_data_preprocessed.jpg": {
+    "mtime": 1793917108.106108,
+    "seen": 1793918920.855399,
+    "ast_hash": "c13d6b0e7cd57ff4acd558f33054f43a",
+    "semantic_hash": "c13d6b0e7cd57ff4acd558f33054f43a"
+  },
+  "figures/ecg_data_unpreprocessed.jpg": {
+    "mtime": 1793917102.5197864,
+    "seen": 1793918920.8553998,
+    "ast_hash": "224cc7716a2c7460c848dbc72d8bef52",
+    "semantic_hash": "224cc7716a2c7460c848dbc72d8bef52"
+  },
+  "figures/example_beats_per_class.png": {
+    "mtime": 1793917192.996257,
+    "seen": 1793918920.8553998,
+    "ast_hash": "3239e3220753dae1ae45f27f48d0ee76",
+    "semantic_hash": "3239e3220753dae1ae45f27f48d0ee76"
+  }
+}
