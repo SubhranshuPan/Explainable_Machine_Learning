@@ -1,13 +1,4 @@
-"""Shared code for Tasks 4 and 5 of the ECG arrhythmia explainability case study.
-
-Holds the data loading, the model definitions (copied from Tasks 2 and 3),
-the evaluation metrics, the PermFIT algorithm and its plots.
-
-CSV layout (made by 00_preprocess.ipynb and 01_split_resample.ipynb):
-    columns 0..274 -> one standardised heartbeat (275 samples, R-peak in the middle)
-    column  275    -> class ID 1..8 (see CLASS_NAMES)
-    column  276    -> MIT-BIH record (patient) number
-"""
+"""Shared code for Tasks 4 and 5: data loading, models, evaluation and PermFIT."""
 from pathlib import Path
 
 import numpy as np
@@ -15,241 +6,152 @@ import matplotlib.pyplot as plt
 from sklearn.base import clone
 from sklearn.calibration import CalibratedClassifierCV
 from sklearn.ensemble import RandomForestClassifier
-from sklearn.metrics import (accuracy_score, confusion_matrix,
-                             precision_recall_fscore_support, ConfusionMatrixDisplay)
+from sklearn.metrics import accuracy_score, confusion_matrix, precision_recall_fscore_support, ConfusionMatrixDisplay
 from sklearn.model_selection import StratifiedKFold
 from sklearn.pipeline import make_pipeline
 from sklearn.preprocessing import StandardScaler
 from sklearn.svm import SVC
 
-# ----------------------------------------------------------------------------- paths
-ROOT = Path(__file__).resolve().parent
-DATA_DIR = ROOT / "data"
-FIG_DIR = ROOT / "figures"
-RESULTS_DIR = ROOT / "results"
-for _d in (FIG_DIR, RESULTS_DIR):
-    _d.mkdir(exist_ok=True)
+DATA_DIR = Path("data")
+FIG_DIR = Path("figures")
+RESULTS_DIR = Path("results")
+FIG_DIR.mkdir(exist_ok=True)
+RESULTS_DIR.mkdir(exist_ok=True)
 
-# ----------------------------------------------------------------------------- constants
 SEED = 42
-BEAT_LENGTH = 275
 CLASS_IDS = [1, 2, 3, 4, 5, 6, 7, 8]
 CLASS_NAMES = ["N", "L", "R", "V", "A", "F", "f", "/"]
+SPLITS = {"beats": "beat hold-out", "patients": "patient hold-out"}
 
-N_SLICES, SLICE_LENGTH = 11, 25          # 11 x 25 = 275 samples
-# ECG regions covered by the slices (lecture "Application of PFI in ECG Classification")
+# each beat (275 samples) is cut into 11 slices of 25 samples
+N_SLICES = 11
+SLICE_LENGTH = 25
 SLICE_REGIONS = [("PR interval", 1, 4), ("QRS complex", 5, 7), ("ST segment / T-wave", 8, 11)]
 
 
-# ----------------------------------------------------------------------------- data
 def load_split(name):
-    """Load the train/test CSVs of one validation protocol.
-
-    name: 'beats' (beat hold-out) or 'patients' (patient hold-out).
-    Returns X_train, y_train, X_test, y_test with y = class IDs 1..8.
-    """
-    out = []
-    for part in ("train", "test"):
-        arr = np.loadtxt(DATA_DIR / f"{part}_{name}.csv", delimiter=",")
-        out += [arr[:, :BEAT_LENGTH], arr[:, BEAT_LENGTH].astype(int)]
-    return tuple(out)
+    # name = "beats" or "patients"; column 275 is the label, column 276 the record number
+    train = np.loadtxt(DATA_DIR / f"train_{name}.csv", delimiter=",")
+    test = np.loadtxt(DATA_DIR / f"test_{name}.csv", delimiter=",")
+    return train[:, :275], train[:, 275].astype(int), test[:, :275], test[:, 275].astype(int)
 
 
-def one_hot(y, classes=CLASS_IDS):
-    """One-hot encode class IDs -> array of shape (n, len(classes))."""
-    return (np.asarray(y)[:, None] == np.asarray(classes)[None, :]).astype(float)
-
-
-# ----------------------------------------------------------------------------- models
 def make_model(name, split, probability=False):
-    """The models explained in Tasks 4 and 5.
-
-    SVM: exactly the models built in Tasks 2 and 3, so PermFIT explains those models.
-         split='beats'    -> task2_svm.py:  SVC(kernel="rbf")
-         split='patients' -> task3.py:      make_pipeline(StandardScaler(), SVC(max_iter=10000, random_state=42))
-    Random Forest (Task 5): 300 trees, 10% of the 275 time points tried at each split,
-         chosen by 3-fold CV grid search (tune_hyperparameters.py). Same for both splits.
-
-    probability=True is only needed for PermFIT, which compares predicted class
-    probabilities with the true one-hot labels. An SVM has no probabilities of its own,
-    so its scores are calibrated with Platt scaling (CalibratedClassifierCV, sklearn's
-    replacement for the deprecated SVC(probability=True)). The decision boundary is the
-    same SVM; only probabilities are added on top.
-    """
-    if name == "SVM":
-        if split == "beats":
-            svm = SVC(kernel="rbf")
-        elif split == "patients":
-            svm = make_pipeline(StandardScaler(), SVC(max_iter=10000, random_state=SEED))
-        else:
-            raise ValueError(f"unknown split {split!r}")
-        return CalibratedClassifierCV(svm, method="sigmoid", ensemble=False) if probability else svm
     if name == "Random Forest":
+        # settings from tune_hyperparameters.py
         return RandomForestClassifier(n_estimators=300, max_features=0.1, min_samples_leaf=1,
                                       n_jobs=-1, random_state=SEED)
-    raise ValueError(f"unknown model {name!r}")
+
+    # same SVMs as task2_svm.py (beats) and task3.py (patients)
+    if split == "beats":
+        model = SVC(kernel="rbf")
+    else:
+        model = make_pipeline(StandardScaler(), SVC(max_iter=10000, random_state=SEED))
+
+    # PermFIT needs class probabilities, so add Platt scaling on top of the SVM
+    if probability:
+        model = CalibratedClassifierCV(model, method="sigmoid", ensemble=False)
+    return model
 
 
-# ----------------------------------------------------------------------------- evaluation
-def evaluate(y_true, y_pred, title="", save_as=None):
-    """Accuracy, per-class + macro precision/recall/F1 and a confusion matrix.
-
-    Macro averages only use classes that occur in y_true. In the patient hold-out
-    test set L, R and A never occur, so their recall is undefined; counting them as 0
-    would unfairly pull the macro score down.
-    """
-    present = [c for c in CLASS_IDS if c in set(np.asarray(y_true))]
+def evaluate(y_true, y_pred, title, save_as):
     acc = accuracy_score(y_true, y_pred)
     p, r, f, support = precision_recall_fscore_support(y_true, y_pred, labels=CLASS_IDS, zero_division=0)
 
-    print(f"=== {title} ===\nAccuracy: {acc:.4f}\n")
-    print(f"{'class':>5} {'precision':>9} {'recall':>7} {'f1':>6} {'support':>8}")
-    for name, cid, pi, ri, fi, si in zip(CLASS_NAMES, CLASS_IDS, p, r, f, support):
-        note = "" if cid in present else "   (not in test set)"
-        print(f"{name:>5} {pi:9.3f} {ri:7.3f} {fi:6.3f} {si:8d}{note}")
+    # macro scores only use the classes that appear in the test set
+    present = [c for c in CLASS_IDS if c in y_true]
     idx = [CLASS_IDS.index(c) for c in present]
-    macro = dict(precision=p[idx].mean(), recall=r[idx].mean(), f1=f[idx].mean())
-    print(f"\nMacro (classes present): precision={macro['precision']:.3f} "
-          f"recall={macro['recall']:.3f} f1={macro['f1']:.3f}\n")
+    scores = {"model": title, "accuracy": acc, "macro_precision": p[idx].mean(),
+              "macro_recall": r[idx].mean(), "macro_f1": f[idx].mean()}
 
+    print(f"=== {title} ===")
+    print(f"Accuracy: {acc:.4f}\n")
+    print("class precision  recall     f1  support")
+    for i, name in enumerate(CLASS_NAMES):
+        note = "" if CLASS_IDS[i] in present else "   (not in test set)"
+        print(f"{name:>5} {p[i]:9.3f} {r[i]:7.3f} {f[i]:6.3f} {support[i]:8d}{note}")
+    print(f"\nMacro (classes present): precision={scores['macro_precision']:.3f} "
+          f"recall={scores['macro_recall']:.3f} f1={scores['macro_f1']:.3f}\n")
+
+    # confusion matrix with each row divided by the number of beats of that class
     cm = confusion_matrix(y_true, y_pred, labels=CLASS_IDS)
-    with np.errstate(invalid="ignore", divide="ignore"):
-        cm_norm = np.nan_to_num(cm / cm.sum(axis=1, keepdims=True))
+    cm = cm / np.maximum(cm.sum(axis=1, keepdims=True), 1)
     fig, ax = plt.subplots(figsize=(6.5, 5.5))
-    ConfusionMatrixDisplay(cm_norm, display_labels=CLASS_NAMES).plot(
-        ax=ax, cmap="Blues", values_format=".2f", colorbar=False)
+    ConfusionMatrixDisplay(cm, display_labels=CLASS_NAMES).plot(ax=ax, cmap="Blues", values_format=".2f", colorbar=False)
     ax.set_title(f"{title}\n(rows = true class, normalised)")
     fig.tight_layout()
-    if save_as:
-        fig.savefig(FIG_DIR / save_as, dpi=200)
-    plt.close(fig)
-
-    return dict(model=title, accuracy=acc, macro_precision=macro["precision"],
-                macro_recall=macro["recall"], macro_f1=macro["f1"])
+    fig.savefig(FIG_DIR / save_as, dpi=200)
+    return scores
 
 
-# ----------------------------------------------------------------------------- PermFIT
-def perturb_slice(X, j, mode, rng, slice_length=SLICE_LENGTH):
-    """Return a copy of X with slice j (0-based) destroyed in one of four ways.
+def one_hot(y, classes):
+    return (y[:, None] == classes[None, :]).astype(float)
 
-    shuffle : shuffle the 25 points inside the slice, separately for every beat
-              (the method asked for in the case study)
-    permute : give every beat the slice of another, randomly chosen beat
-              (classic permutation feature importance)
-    zero    : set the slice to 0
-    mean    : replace the slice by its own average value (a flat line)
-    """
-    s, e = j * slice_length, (j + 1) * slice_length
+
+def perturb_slice(X, j, mode, rng):
+    # returns a copy of X where slice j (0-based) is destroyed
+    s, e = j * SLICE_LENGTH, (j + 1) * SLICE_LENGTH
     Xp = X.copy()
-    if mode == "shuffle":
+    if mode == "shuffle":      # shuffle the points inside the slice (main method)
         Xp[:, s:e] = rng.permuted(X[:, s:e], axis=1)
-    elif mode == "permute":
+    elif mode == "permute":    # take the slice from another random beat
         Xp[:, s:e] = X[rng.permutation(len(X)), s:e]
     elif mode == "zero":
         Xp[:, s:e] = 0.0
     elif mode == "mean":
         Xp[:, s:e] = X[:, s:e].mean(axis=1, keepdims=True)
-    else:
-        raise ValueError(f"unknown mode {mode!r}")
     return Xp
 
 
-def compute_permfit_ecg(model, X, y, n_splits=5, n_slices=N_SLICES, slice_length=SLICE_LENGTH,
-                        modes=("shuffle",), random_state=SEED, verbose=True):
-    """PermFIT: permutation feature importance with stratified K-fold cross-fitting.
+def compute_permfit_ecg(model, X, y, modes=("shuffle",), n_splits=5):
+    """PermFIT: importance of each slice, with stratified K-fold cross-fitting."""
+    folds = StratifiedKFold(n_splits=n_splits, shuffle=True, random_state=SEED)
+    rng = np.random.default_rng(SEED)
 
-    For every fold k: fit a fresh copy of `model` on the other K-1 folds, then for
-    every beat i in fold k and every slice j compute
+    M = {m: np.zeros((len(X), N_SLICES)) for m in modes}          # importance of slice j for beat i
+    per_fold = {m: np.zeros((n_splits, N_SLICES)) for m in modes}
+    correct = {m: np.zeros((len(X), N_SLICES), dtype=bool) for m in modes}
+    base_correct = np.zeros(len(X), dtype=bool)
+    base_acc, base_err = [], []
 
-        M_ij = sum_c (Y_ic - p_c(X_i^(j)))^2  -  sum_c (Y_ic - p_c(X_i))^2
+    for k, (train, test) in enumerate(folds.split(X, y)):
+        fold_model = clone(model).fit(X[train], y[train])
+        classes = fold_model.classes_
+        Y = one_hot(y[test], classes)
 
-    i.e. the squared error between the one-hot label Y_i and the predicted class
-    probabilities p(.) after slice j was destroyed, minus the same error on the
-    intact beat. M_ij > 0 means the model got worse, so slice j mattered for beat i.
-    Every beat is scored by a model that never saw it during training.
+        # squared error on the intact beats
+        p = fold_model.predict_proba(X[test])
+        err = ((Y - p) ** 2).sum(axis=1)
+        base_correct[test] = classes[p.argmax(1)] == y[test]
+        base_acc.append(base_correct[test].mean())
+        base_err.append(err.mean())
+        print(f"  fold {k + 1}/{n_splits}: train {len(train)}, test {len(test)}, accuracy {base_acc[-1]:.3f}", flush=True)
 
-    Parameters
-    ----------
-    model : unfitted sklearn classifier with predict_proba
-            (for the SVM use make_model("SVM", split, probability=True)).
-    X, y  : beats (N, 275) and class IDs (N,).
-    modes : perturbation types to evaluate, see perturb_slice(). All modes reuse the
-            same fitted fold models, so extra modes only cost predictions.
-
-    Returns
-    -------
-    dict mode -> {
-        "mean":     (n_slices,)  mean importance  M_j  (average over all N beats)
-        "per_fold": (n_splits, n_slices) mean importance inside each fold
-        "acc_drop": (n_slices,)  drop in accuracy (percentage points) per slice
-        "M":        (N, n_slices) the full beat-level importance matrix
-    }
-    plus key "baseline": per-fold accuracy and squared error of the intact beats.
-    """
-    N, D = X.shape
-    assert D == n_slices * slice_length, f"expected {n_slices * slice_length} features, got {D}"
-    skf = StratifiedKFold(n_splits=n_splits, shuffle=True, random_state=random_state)
-    rng = np.random.default_rng(random_state)
-
-    res = {m: {"M": np.zeros((N, n_slices)), "per_fold": np.zeros((n_splits, n_slices)),
-               "correct": np.zeros((N, n_slices), dtype=bool)} for m in modes}
-    base_correct = np.zeros(N, dtype=bool)
-    baseline = {"accuracy": [], "sq_error": []}
-
-    for k, (tr, va) in enumerate(skf.split(X, y)):
-        fold_model = clone(model).fit(X[tr], y[tr])
-        classes = fold_model.classes_                 # column order of predict_proba
-        Y_va = one_hot(y[va], classes)
-
-        p_clean = fold_model.predict_proba(X[va])
-        loss_clean = ((Y_va - p_clean) ** 2).sum(axis=1)
-        base_correct[va] = classes[p_clean.argmax(1)] == y[va]
-        baseline["accuracy"].append(base_correct[va].mean())
-        baseline["sq_error"].append(loss_clean.mean())
-        if verbose:
-            print(f"  fold {k + 1}/{n_splits}: train {len(tr)}, test {len(va)}, "
-                  f"accuracy {baseline['accuracy'][-1]:.3f}", flush=True)
-
+        # destroy each slice: importance = error after - error before
         for m in modes:
-            for j in range(n_slices):
-                p_perm = fold_model.predict_proba(perturb_slice(X[va], j, m, rng, slice_length))
-                loss_perm = ((Y_va - p_perm) ** 2).sum(axis=1)
-                res[m]["M"][va, j] = loss_perm - loss_clean
-                res[m]["per_fold"][k, j] = (loss_perm - loss_clean).mean()
-                res[m]["correct"][va, j] = classes[p_perm.argmax(1)] == y[va]
+            for j in range(N_SLICES):
+                p_perm = fold_model.predict_proba(perturb_slice(X[test], j, m, rng))
+                M[m][test, j] = ((Y - p_perm) ** 2).sum(axis=1) - err
+                per_fold[m][k, j] = M[m][test, j].mean()
+                correct[m][test, j] = classes[p_perm.argmax(1)] == y[test]
 
-    out = {"baseline": {key: np.array(v) for key, v in baseline.items()}}
+    results = {"baseline": {"accuracy": np.array(base_acc), "sq_error": np.array(base_err)}}
     for m in modes:
-        out[m] = {"mean": res[m]["M"].mean(axis=0), "per_fold": res[m]["per_fold"], "M": res[m]["M"],
-                  "acc_drop": 100 * (base_correct.mean() - res[m]["correct"].mean(axis=0))}
-    return out
+        results[m] = {"mean": M[m].mean(axis=0), "per_fold": per_fold[m], "M": M[m],
+                      "acc_drop": 100 * (base_correct.mean() - correct[m].mean(axis=0))}
+    return results
 
 
-def plot_permfit_importance(mean_importance, per_fold=None, title="", ax=None, save_path=None):
-    """Bar chart of the 11 slice importances, shaded by ECG region.
-
-    Error bars (if per_fold is given) show the spread across the 5 CV folds.
-    """
-    own_fig = ax is None
-    if own_fig:
-        fig, ax = plt.subplots(figsize=(9, 4.5))
-    slices = np.arange(1, len(mean_importance) + 1)
+def plot_permfit_importance(importance, per_fold, title, ax):
     colors = {"PR interval": "royalblue", "QRS complex": "crimson", "ST segment / T-wave": "darkgreen"}
     for label, a, b in SLICE_REGIONS:
-        ax.axvspan(a - 0.5, b + 0.5, color=colors[label], alpha=0.12,
-                   label=f"{label} (slices {a}-{b})")
-    yerr = per_fold.std(axis=0) if per_fold is not None else None
-    ax.bar(slices, mean_importance, yerr=yerr, capsize=3, color="navy", width=0.6, zorder=3)
+        ax.axvspan(a - 0.5, b + 0.5, color=colors[label], alpha=0.12, label=f"{label} (slices {a}-{b})")
+    slices = np.arange(1, N_SLICES + 1)
+    # error bars = spread of the importance over the folds
+    ax.bar(slices, importance, yerr=per_fold.std(axis=0), capsize=3, color="navy", width=0.6, zorder=3)
     ax.axhline(0, color="grey", lw=0.8)
     ax.set_xticks(slices)
     ax.set_xlabel("ECG slice (25 samples each; R-peak in slice 6)")
     ax.set_ylabel(r"mean importance $\bar{M}_j$")
     ax.set_title(title)
     ax.grid(axis="y", ls=":", alpha=0.6, zorder=0)
-    if own_fig:
-        ax.legend(loc="upper left", fontsize=8)
-        fig.tight_layout()
-        if save_path:
-            fig.savefig(save_path, dpi=200)
-        plt.close(fig)
-    return ax

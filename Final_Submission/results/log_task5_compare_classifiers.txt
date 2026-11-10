@@ -58,6 +58,11 @@ class precision  recall     f1  support
 
 Macro (classes present): precision=0.791 recall=0.581 f1=0.529
 
+        model         protocol  accuracy  macro_precision  macro_recall  macro_f1
+          SVM    beat hold-out     0.938            0.763         0.953     0.815
+          SVM patient hold-out     0.866            0.843         0.692     0.694
+Random Forest    beat hold-out     0.968            0.850         0.954     0.893
+Random Forest patient hold-out     0.836            0.791         0.581     0.529
 
 [Random Forest | beat hold-out] PermFIT on 30992 training beats
   fold 1/5: train 24793, test 6199, accuracy 0.985
@@ -65,7 +70,7 @@ Macro (classes present): precision=0.791 recall=0.581 f1=0.529
   fold 3/5: train 24794, test 6198, accuracy 0.983
   fold 4/5: train 24794, test 6198, accuracy 0.985
   fold 5/5: train 24794, test 6198, accuracy 0.982
-  done in 1.6 min
+  done in 1.2 min
   slices ranked by importance (shuffle): [6, 7, 5, 4, 8, 3, 1, 10, 9, 11, 2]
 
 [Random Forest | patient hold-out] PermFIT on 35384 training beats
@@ -74,18 +79,9 @@ Macro (classes present): precision=0.791 recall=0.581 f1=0.529
   fold 3/5: train 28307, test 7077, accuracy 0.989
   fold 4/5: train 28307, test 7077, accuracy 0.986
   fold 5/5: train 28308, test 7076, accuracy 0.988
-  done in 1.7 min
+  done in 1.4 min
   slices ranked by importance (shuffle): [6, 7, 5, 8, 4, 3, 10, 9, 11, 1, 2]
-
-Classification results
-         model         protocol  accuracy  macro_precision  macro_recall  macro_f1
-          SVM    beat hold-out     0.938            0.763         0.953     0.815
-          SVM patient hold-out     0.866            0.843         0.692     0.694
-Random Forest    beat hold-out     0.968            0.850         0.954     0.893
-Random Forest patient hold-out     0.836            0.791         0.581     0.529
-
-PermFIT importance (shuffle within slice)
- model    Random Forest                            SVM                 
+model    Random Forest                            SVM                 
 protocol beat hold-out patient hold-out beat hold-out patient hold-out
 slice                                                                 
 1               0.0089           0.0052        0.0093           0.0137
@@ -99,7 +95,3 @@ slice
 9               0.0077           0.0068       -0.0001          -0.0001
 10              0.0089           0.0070       -0.0007           0.0011
 11              0.0048           0.0058        0.0022           0.0032
-SVM           beat hold-out     PermFIT CV baseline accuracy 0.958  top-3 slices [6, 7, 5]
-SVM           patient hold-out  PermFIT CV baseline accuracy 0.977  top-3 slices [6, 5, 7]
-Random Forest beat hold-out     PermFIT CV baseline accuracy 0.983  top-3 slices [6, 7, 5]
-Random Forest patient hold-out  PermFIT CV baseline accuracy 0.986  top-3 slices [6, 7, 5]
