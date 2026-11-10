@@ -140,7 +140,7 @@ Tasks 1–3 are the team members' scripts with small fixes, each marked `# FIX:`
 
 | Member | Work |
 |---|---|
-| [name] | Task 1: data inspection (`task1.py`) |
-| [name] | Task 2: beat hold-out SVM (`task2_svm.py`) |
-| [name] | Task 3: patient hold-out SVM (`task3.py`) |
-| [name] | Task 4: PermFIT; Task 5: Random Forest comparison; integration |
+| Ziming Zhang | Task 1: data inspection (`task1.py`) |
+| Liangxiao HE | Task 2: beat hold-out SVM (`task2_svm.py`) |
+| Zhihui HUANG | Task 3: patient hold-out SVM (`task3.py`) |
+| Subhranshu and Bhushan | Task 4: PermFIT; Task 5: Random Forest comparison; integration |
