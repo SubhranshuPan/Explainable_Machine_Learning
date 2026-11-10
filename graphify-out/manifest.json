@@ -5,12 +5,6 @@
     "ast_hash": "2b03eaffd6cd0874f0c3ce1d91ef4e72",
     "semantic_hash": "2b03eaffd6cd0874f0c3ce1d91ef4e72"
   },
-  "src/ecg_utils.py": {
-    "mtime": 1793917087.43686,
-    "seen": 1793918920.855387,
-    "ast_hash": "5692c88b758e4a0115590174718528f3",
-    "semantic_hash": "5692c88b758e4a0115590174718528f3"
-  },
   "CLAUDE.md": {
     "mtime": 1793917292.7487402,
     "seen": 1793918920.8553889,
@@ -18,363 +12,261 @@
     "semantic_hash": "67d88e9d0760c3ba54c75dfd9551c1c5"
   },
   "README.md": {
-    "mtime": 1793917202.5349896,
-    "seen": 1793918920.8553898,
-    "ast_hash": "f22a59289455ffd7b4c7581cb2c096fc",
-    "semantic_hash": "f22a59289455ffd7b4c7581cb2c096fc"
-  },
-  "requirements.txt": {
-    "mtime": 1793916967.3429494,
-    "seen": 1793918920.855391,
-    "ast_hash": "932700182d36c3260e1872244c7bd805",
-    "semantic_hash": "932700182d36c3260e1872244c7bd805"
-  },
-  "ExplainabilityMachineLearning (2).pdf": {
-    "mtime": 1793806205.989961,
-    "seen": 1793918920.855392,
-    "ast_hash": "359634e67fc02f3046a81fb544ef55ee",
-    "semantic_hash": "359634e67fc02f3046a81fb544ef55ee"
-  },
-  "ML_interpretability-part2 (1).pdf": {
-    "mtime": 1793806216.7880697,
-    "seen": 1793918920.855393,
-    "ast_hash": "ed190e18727241c64eb7a0cf61e2b53d",
-    "semantic_hash": "ed190e18727241c64eb7a0cf61e2b53d"
-  },
-  "Marking sheet.pdf": {
-    "mtime": 1793806289.487759,
-    "seen": 1793918920.855393,
-    "ast_hash": "4acb12fb3ccbc06247e17789a63c1d51",
-    "semantic_hash": "4acb12fb3ccbc06247e17789a63c1d51"
-  },
-  "Report template.pdf": {
-    "mtime": 1793806267.8871112,
-    "seen": 1793918920.855393,
-    "ast_hash": "d50c9e06b59c26824000363fc6530705",
-    "semantic_hash": "d50c9e06b59c26824000363fc6530705"
-  },
-  "explainability_machineLearning.pdf": {
-    "mtime": 1793806222.815243,
-    "seen": 1793918920.8553941,
-    "ast_hash": "38ff6cc1d78dc26df7ca8bf5e82ba9b6",
-    "semantic_hash": "38ff6cc1d78dc26df7ca8bf5e82ba9b6"
-  },
-  "figures/cm_random_forest_beat.png": {
-    "mtime": 1793917272.2240634,
-    "seen": 1793918920.8553941,
-    "ast_hash": "3b244bb57d2cd78f7dce5150b06ea8cf",
-    "semantic_hash": "3b244bb57d2cd78f7dce5150b06ea8cf"
-  },
-  "figures/cm_random_forest_patient.png": {
-    "mtime": 1793917292.2439108,
-    "seen": 1793918920.855395,
-    "ast_hash": "1a1c78997b16c41085f0db8e84deccce",
-    "semantic_hash": "1a1c78997b16c41085f0db8e84deccce"
-  },
-  "figures/cm_svm_beat.png": {
-    "mtime": 1793917245.1553473,
-    "seen": 1793918920.855396,
-    "ast_hash": "e45e80472f13618b6c24ec4269dc1c06",
-    "semantic_hash": "e45e80472f13618b6c24ec4269dc1c06"
-  },
-  "figures/cm_svm_patient.png": {
-    "mtime": 1793917255.1751027,
-    "seen": 1793918920.855396,
-    "ast_hash": "008106676b59804ed6e0356ff635adc9",
-    "semantic_hash": "008106676b59804ed6e0356ff635adc9"
-  },
-  "figures/counts_all_data.png": {
-    "mtime": 1793917157.2064216,
-    "seen": 1793918920.8553972,
-    "ast_hash": "b39cf9695c0fd9a3d784f310ddd2f954",
-    "semantic_hash": "b39cf9695c0fd9a3d784f310ddd2f954"
-  },
-  "figures/counts_test_beats.png": {
-    "mtime": 1793917157.413206,
-    "seen": 1793918920.8553972,
-    "ast_hash": "363c3c0c96919d9e772e965b70172370",
-    "semantic_hash": "363c3c0c96919d9e772e965b70172370"
-  },
-  "figures/counts_test_patients.png": {
-    "mtime": 1793917157.5856977,
-    "seen": 1793918920.8553972,
-    "ast_hash": "9fffd89201a4f422828b4f3a274dc061",
-    "semantic_hash": "9fffd89201a4f422828b4f3a274dc061"
-  },
-  "figures/counts_train_beats.png": {
-    "mtime": 1793917157.3107884,
-    "seen": 1793918920.855398,
-    "ast_hash": "7b2c789e9888a4d40513a6d94b10c1f2",
-    "semantic_hash": "7b2c789e9888a4d40513a6d94b10c1f2"
-  },
-  "figures/counts_train_patients.png": {
-    "mtime": 1793917157.5057914,
-    "seen": 1793918920.855398,
-    "ast_hash": "082b40378b875d3b3f2ce135bb08285d",
-    "semantic_hash": "082b40378b875d3b3f2ce135bb08285d"
-  },
-  "figures/ecg_data_beats_per_class.jpg": {
-    "mtime": 1793917112.147639,
-    "seen": 1793918920.855399,
-    "ast_hash": "e47536a287115c18b3adca222bcbd783",
-    "semantic_hash": "e47536a287115c18b3adca222bcbd783"
-  },
-  "figures/ecg_data_preprocessed.jpg": {
-    "mtime": 1793917108.106108,
-    "seen": 1793918920.855399,
-    "ast_hash": "c13d6b0e7cd57ff4acd558f33054f43a",
-    "semantic_hash": "c13d6b0e7cd57ff4acd558f33054f43a"
-  },
-  "figures/ecg_data_unpreprocessed.jpg": {
-    "mtime": 1793917102.5197864,
-    "seen": 1793918920.8553998,
-    "ast_hash": "224cc7716a2c7460c848dbc72d8bef52",
-    "semantic_hash": "224cc7716a2c7460c848dbc72d8bef52"
-  },
-  "figures/example_beats_per_class.png": {
-    "mtime": 1793917192.996257,
-    "seen": 1793918920.8553998,
-    "ast_hash": "3239e3220753dae1ae45f27f48d0ee76",
-    "semantic_hash": "3239e3220753dae1ae45f27f48d0ee76"
+    "mtime": 1794330511.393724,
+    "seen": 1794331304.24333,
+    "ast_hash": "965645fee803cab4bb7c704ac7d0b608",
+    "semantic_hash": "965645fee803cab4bb7c704ac7d0b608"
   },
   "Final_Submission/ecg_utils.py": {
-    "mtime": 1794316756.69107,
-    "seen": 1794323433.542123,
-    "ast_hash": "edb7243458e8d56e3037f319d6dbf10a",
-    "semantic_hash": ""
+    "mtime": 1794326818.9717019,
+    "seen": 1794331304.243318,
+    "ast_hash": "56bd0cd6e02147aed25ae12df3ce5eba",
+    "semantic_hash": "56bd0cd6e02147aed25ae12df3ce5eba"
   },
   "Final_Submission/results/metrics_random_forest_beats.json": {
-    "mtime": 1794323366.3330586,
-    "seen": 1794323433.542125,
+    "mtime": 1794329396.8080013,
+    "seen": 1794331304.243318,
     "ast_hash": "b5e5267e4e7aac6043bdd10ad4fe2543",
-    "semantic_hash": ""
+    "semantic_hash": "b5e5267e4e7aac6043bdd10ad4fe2543"
   },
   "Final_Submission/results/metrics_random_forest_patients.json": {
-    "mtime": 1794323387.4013977,
-    "seen": 1794323433.5421262,
+    "mtime": 1794329417.0590959,
+    "seen": 1794331304.243319,
     "ast_hash": "d50b6973a1ba28ed7900afe37ab26a72",
-    "semantic_hash": ""
+    "semantic_hash": "d50b6973a1ba28ed7900afe37ab26a72"
   },
   "Final_Submission/results/metrics_svm_beats.json": {
-    "mtime": 1794323350.1911693,
-    "seen": 1794323433.5421262,
+    "mtime": 1794329380.4416857,
+    "seen": 1794331304.24332,
     "ast_hash": "0b7ddcbaddc67b842725fd51d5bf88ce",
-    "semantic_hash": ""
+    "semantic_hash": "0b7ddcbaddc67b842725fd51d5bf88ce"
   },
   "Final_Submission/results/metrics_svm_patients.json": {
-    "mtime": 1794323366.811384,
-    "seen": 1794323433.5421271,
+    "mtime": 1794329397.3026345,
+    "seen": 1794331304.24332,
     "ast_hash": "67dfc7277cbecb5f1d77e02a036588c0",
-    "semantic_hash": ""
+    "semantic_hash": "67dfc7277cbecb5f1d77e02a036588c0"
   },
   "Final_Submission/run_all.sh": {
-    "mtime": 1794316791.392195,
-    "seen": 1794323433.5421271,
-    "ast_hash": "cd41e40d3fe9e1d98cefd2b9f530333f",
-    "semantic_hash": ""
+    "mtime": 1794328747.9132142,
+    "seen": 1794331304.2433212,
+    "ast_hash": "c8cb50282a0bcd9f5b427d5a49a6c2a4",
+    "semantic_hash": "c8cb50282a0bcd9f5b427d5a49a6c2a4"
   },
   "Final_Submission/task4_permfit.py": {
-    "mtime": 1794316766.9837492,
-    "seen": 1794323433.54213,
-    "ast_hash": "eb82bc3a675ade9c007f045503f4512f",
-    "semantic_hash": ""
+    "mtime": 1794326819.7642438,
+    "seen": 1794331304.2433228,
+    "ast_hash": "f2a7a40a1d5572630273f67ef7d1fa89",
+    "semantic_hash": "f2a7a40a1d5572630273f67ef7d1fa89"
   },
   "Final_Submission/task5_compare_classifiers.py": {
-    "mtime": 1794323041.9745717,
-    "seen": 1794323433.542131,
-    "ast_hash": "95c6e9b2c2a7cf4e71ee1cffd417ddbb",
-    "semantic_hash": ""
+    "mtime": 1794326820.5494366,
+    "seen": 1794331304.2433228,
+    "ast_hash": "2871887571636e4152326ecb1bdfdd52",
+    "semantic_hash": "2871887571636e4152326ecb1bdfdd52"
   },
   "Final_Submission/tune_hyperparameters.py": {
-    "mtime": 1794316790.6100342,
-    "seen": 1794323433.542131,
-    "ast_hash": "a6f7a4833b7e504e3e81315162d4a5dd",
-    "semantic_hash": ""
-  },
-  "Teamwork/task1.py": {
-    "mtime": 1794244677.9663596,
-    "seen": 1794290480.875475,
-    "ast_hash": "240c3a0f6ca1b943f15d49323cead8a4",
-    "semantic_hash": ""
-  },
-  "Teamwork/task2_svm.py": {
-    "mtime": 1794244722.7050447,
-    "seen": 1794290480.875475,
-    "ast_hash": "91f450eb3e02c6f543f66df3523b82c4",
-    "semantic_hash": ""
-  },
-  "Teamwork/task3.py": {
-    "mtime": 1794285751.1293967,
-    "seen": 1794290480.875476,
-    "ast_hash": "1239c0096c1616fdbb8f7a25278ad928",
-    "semantic_hash": ""
+    "mtime": 1794326821.3341768,
+    "seen": 1794331304.2433238,
+    "ast_hash": "d70c4a6c8a8cbadca03b9f861c97d072",
+    "semantic_hash": "d70c4a6c8a8cbadca03b9f861c97d072"
   },
   "Final_Submission/README.md": {
-    "mtime": 1794323133.7961195,
-    "seen": 1794323433.542136,
-    "ast_hash": "de12ba5b95743177984d149fd38c0098",
-    "semantic_hash": ""
+    "mtime": 1794328748.684999,
+    "seen": 1794331304.243326,
+    "ast_hash": "65542a5456fbba918ec923a1f536602f",
+    "semantic_hash": "65542a5456fbba918ec923a1f536602f"
   },
   "Final_Submission/requirements.txt": {
-    "mtime": 1794286232.9612486,
-    "seen": 1794290480.875479,
-    "ast_hash": "932700182d36c3260e1872244c7bd805",
-    "semantic_hash": ""
+    "mtime": 1794328557.3802073,
+    "seen": 1794331304.243326,
+    "ast_hash": "5012238592cb1e66a57d0b52cc64aed1",
+    "semantic_hash": "5012238592cb1e66a57d0b52cc64aed1"
   },
   "Final_Submission/results/log_task5_compare_classifiers.txt": {
-    "mtime": 1794319155.5246532,
-    "seen": 1794323433.542138,
-    "ast_hash": "db4ff1f7f06ba3cdc0b03a422a8557f2",
-    "semantic_hash": ""
+    "mtime": 1794327163.644037,
+    "seen": 1794331304.243329,
+    "ast_hash": "58582d7284a7f6405c8fbef7708d21d4",
+    "semantic_hash": "58582d7284a7f6405c8fbef7708d21d4"
   },
   "Final_Submission/results/log_tune_hyperparameters.txt": {
-    "mtime": 1794316913.2244303,
-    "seen": 1794323433.5421388,
+    "mtime": 1794326968.7009397,
+    "seen": 1794331304.243329,
     "ast_hash": "5b7b544ce66df0e11dce39592c4f70d2",
-    "semantic_hash": ""
+    "semantic_hash": "5b7b544ce66df0e11dce39592c4f70d2"
   },
   "Final_Submission/figures/cm_random_forest_beats.png": {
-    "mtime": 1794323366.3286755,
-    "seen": 1794323433.542144,
+    "mtime": 1794329396.8077593,
+    "seen": 1794331304.243333,
     "ast_hash": "550e1fa6a07c4213f732cb1790fd6ab6",
-    "semantic_hash": ""
+    "semantic_hash": "550e1fa6a07c4213f732cb1790fd6ab6"
   },
   "Final_Submission/figures/cm_random_forest_patients.png": {
-    "mtime": 1794323387.4011145,
-    "seen": 1794323433.542144,
+    "mtime": 1794329417.0569396,
+    "seen": 1794331304.243333,
     "ast_hash": "0bb4f1413e8402b1104cde06e36a24e8",
-    "semantic_hash": ""
+    "semantic_hash": "0bb4f1413e8402b1104cde06e36a24e8"
   },
   "Final_Submission/figures/cm_svm_beats.png": {
-    "mtime": 1794323350.1907444,
-    "seen": 1794323433.542145,
+    "mtime": 1794329380.4414415,
+    "seen": 1794331304.2433338,
     "ast_hash": "23c49583518f3f09966e842054cca25e",
-    "semantic_hash": ""
+    "semantic_hash": "23c49583518f3f09966e842054cca25e"
   },
   "Final_Submission/figures/cm_svm_patients.png": {
-    "mtime": 1794323366.8107374,
-    "seen": 1794323433.542145,
+    "mtime": 1794329397.302359,
+    "seen": 1794331304.2433338,
     "ast_hash": "d79fff8a44f68f7be77a50782e4d3b42",
-    "semantic_hash": ""
+    "semantic_hash": "d79fff8a44f68f7be77a50782e4d3b42"
   },
   "Final_Submission/figures/permfit_comparison_grid.png": {
-    "mtime": 1794323387.7716029,
-    "seen": 1794323433.542146,
+    "mtime": 1794329417.6176522,
+    "seen": 1794331304.243335,
     "ast_hash": "2bc26595449a48970061498b44bd86b1",
-    "semantic_hash": ""
+    "semantic_hash": "2bc26595449a48970061498b44bd86b1"
   },
   "Final_Submission/figures/permfit_perturbation_methods.png": {
-    "mtime": 1794323388.2823539,
-    "seen": 1794323433.542146,
+    "mtime": 1794329418.1281064,
+    "seen": 1794331304.243335,
     "ast_hash": "d931406abcca0e0de0e4e3eda95f157b",
-    "semantic_hash": ""
+    "semantic_hash": "d931406abcca0e0de0e4e3eda95f157b"
   },
   "Final_Submission/figures/permfit_profiles_svm_vs_rf.png": {
-    "mtime": 1794323388.0953553,
-    "seen": 1794323433.5421472,
+    "mtime": 1794329417.944979,
+    "seen": 1794331304.243336,
     "ast_hash": "ebdf61102bed8077b605aa1b54f69abe",
-    "semantic_hash": ""
+    "semantic_hash": "ebdf61102bed8077b605aa1b54f69abe"
   },
   "Final_Submission/figures/permfit_random_forest_beats.png": {
-    "mtime": 1794319055.394516,
-    "seen": 1794323433.5421472,
+    "mtime": 1794327077.9766057,
+    "seen": 1794331304.243336,
     "ast_hash": "fadc052bed6e51489227cc94eab474c1",
-    "semantic_hash": ""
+    "semantic_hash": "fadc052bed6e51489227cc94eab474c1"
   },
   "Final_Submission/figures/permfit_random_forest_patients.png": {
-    "mtime": 1794319155.088211,
-    "seen": 1794323433.542148,
+    "mtime": 1794327163.2133718,
+    "seen": 1794331304.243336,
     "ast_hash": "01772db41599ae12dfdaf2f259734ddd",
-    "semantic_hash": ""
+    "semantic_hash": "01772db41599ae12dfdaf2f259734ddd"
   },
   "Final_Submission/figures/permfit_svm_beats.png": {
     "mtime": 1794317888.612944,
-    "seen": 1794323433.542148,
+    "seen": 1794331304.243337,
     "ast_hash": "c3d0052fb1bd3462f30d5d2d6d134e5c",
-    "semantic_hash": ""
+    "semantic_hash": "c3d0052fb1bd3462f30d5d2d6d134e5c"
   },
   "Final_Submission/figures/permfit_svm_patients.png": {
     "mtime": 1794318910.5215049,
-    "seen": 1794323433.542149,
+    "seen": 1794331304.243337,
     "ast_hash": "1f2aaab1aac6129546f93534f46b3733",
-    "semantic_hash": ""
-  },
-  "Teamwork/task1_class_distribution.jpg": {
-    "mtime": 1794244707.845856,
-    "seen": 1794290480.875493,
-    "ast_hash": "a037d26309021bec567093ed441f3b56",
-    "semantic_hash": ""
-  },
-  "Teamwork/task1_ecg_beats.jpg": {
-    "mtime": 1794244712.77195,
-    "seen": 1794290480.875493,
-    "ast_hash": "4c6474e018551489bb4235e47353a7dc",
-    "semantic_hash": ""
+    "semantic_hash": "1f2aaab1aac6129546f93534f46b3733"
   },
   "Final_Submission/task1.py": {
     "mtime": 1794316716.6844513,
-    "seen": 1794323433.5421288,
+    "seen": 1794331304.2433212,
     "ast_hash": "82f995afb184dda0368904e04eb6ebaf",
-    "semantic_hash": ""
+    "semantic_hash": "82f995afb184dda0368904e04eb6ebaf"
   },
   "Final_Submission/task2_svm.py": {
     "mtime": 1794316723.9491792,
-    "seen": 1794323433.5421288,
+    "seen": 1794331304.2433221,
     "ast_hash": "44b65bd4730a00eee527bb5bceb699ad",
-    "semantic_hash": ""
+    "semantic_hash": "44b65bd4730a00eee527bb5bceb699ad"
   },
   "Final_Submission/task3.py": {
     "mtime": 1794316737.676688,
-    "seen": 1794323433.54213,
+    "seen": 1794331304.2433221,
     "ast_hash": "89c9abc228213e61aef431be5f6f6ff3",
-    "semantic_hash": ""
+    "semantic_hash": "89c9abc228213e61aef431be5f6f6ff3"
   },
   "Final_Submission/results/log_task1.txt": {
     "mtime": 1794316800.0941603,
-    "seen": 1794323433.5421371,
+    "seen": 1794331304.243326,
     "ast_hash": "6ecc6ba364d6a369b7195845dcf00dd4",
-    "semantic_hash": ""
+    "semantic_hash": "6ecc6ba364d6a369b7195845dcf00dd4"
   },
   "Final_Submission/results/log_task2_svm.txt": {
     "mtime": 1794316859.0352974,
-    "seen": 1794323433.5421371,
+    "seen": 1794331304.243327,
     "ast_hash": "e0b0efd19766c317c287fc1f65342d90",
-    "semantic_hash": ""
+    "semantic_hash": "e0b0efd19766c317c287fc1f65342d90"
   },
   "Final_Submission/results/log_task3.txt": {
     "mtime": 1794316877.6256893,
-    "seen": 1794323433.5421371,
+    "seen": 1794331304.243327,
     "ast_hash": "3bddfcc950e713136bbff3cc244a3f28",
-    "semantic_hash": ""
+    "semantic_hash": "3bddfcc950e713136bbff3cc244a3f28"
   },
   "Final_Submission/results/log_task4_permfit_svm.txt": {
     "mtime": 1794318910.5216482,
-    "seen": 1794323433.542138,
+    "seen": 1794331304.243328,
     "ast_hash": "524359e52a7acd5b5b155a5ce8c13386",
-    "semantic_hash": ""
+    "semantic_hash": "524359e52a7acd5b5b155a5ce8c13386"
   },
   "Final_Submission/Report.pdf": {
     "mtime": 1794323428.0653756,
-    "seen": 1794323433.542141,
+    "seen": 1794331304.24333,
     "ast_hash": "891f55c75b16f70ebb847bbc58c1e654",
-    "semantic_hash": ""
+    "semantic_hash": "891f55c75b16f70ebb847bbc58c1e654"
   },
   "Final_Submission/figures/task1_class_distribution.jpg": {
-    "mtime": 1794323271.8100166,
-    "seen": 1794323433.542149,
+    "mtime": 1794329264.6524353,
+    "seen": 1794331304.2433379,
     "ast_hash": "a037d26309021bec567093ed441f3b56",
-    "semantic_hash": ""
+    "semantic_hash": "a037d26309021bec567093ed441f3b56"
   },
   "Final_Submission/figures/task1_ecg_beats.jpg": {
-    "mtime": 1794323271.6290932,
-    "seen": 1794323433.542149,
+    "mtime": 1794329264.4841788,
+    "seen": 1794331304.2433379,
     "ast_hash": "65ebb6c497ad694a6f7e728b1b4e589f",
-    "semantic_hash": ""
+    "semantic_hash": "65ebb6c497ad694a6f7e728b1b4e589f"
   },
   "Final_Submission/figures/task3_confusion_matrix.png": {
-    "mtime": 1794323348.721264,
-    "seen": 1794323433.5421498,
+    "mtime": 1794329343.5040488,
+    "seen": 1794331304.243339,
     "ast_hash": "be4140a6b9fafed69f00f6c1869c2089",
-    "semantic_hash": ""
+    "semantic_hash": "be4140a6b9fafed69f00f6c1869c2089"
+  },
+  ".vscode/settings.json": {
+    "mtime": 1794323962.3137314,
+    "seen": 1794331304.243316,
+    "ast_hash": "39a760912f13e1fb26b0eecd66cb545e",
+    "semantic_hash": "39a760912f13e1fb26b0eecd66cb545e"
+  },
+  "make_submission_zip.sh": {
+    "mtime": 1794330521.4232798,
+    "seen": 1794331304.2433238,
+    "ast_hash": "d2bad6b97db04654263bc9758aaa4041",
+    "semantic_hash": "d2bad6b97db04654263bc9758aaa4041"
+  },
+  "course_material/Case_study_ECG_explainability.pdf": {
+    "mtime": 1793806222.815243,
+    "seen": 1794331304.243331,
+    "ast_hash": "38ff6cc1d78dc26df7ca8bf5e82ba9b6",
+    "semantic_hash": "38ff6cc1d78dc26df7ca8bf5e82ba9b6"
+  },
+  "course_material/Lecture_1_Explainability_ML.pdf": {
+    "mtime": 1793806205.989961,
+    "seen": 1794331304.243331,
+    "ast_hash": "359634e67fc02f3046a81fb544ef55ee",
+    "semantic_hash": "359634e67fc02f3046a81fb544ef55ee"
+  },
+  "course_material/Lecture_2_ML_interpretability.pdf": {
+    "mtime": 1793806216.7880697,
+    "seen": 1794331304.243331,
+    "ast_hash": "ed190e18727241c64eb7a0cf61e2b53d",
+    "semantic_hash": "ed190e18727241c64eb7a0cf61e2b53d"
+  },
+  "course_material/Marking_sheet.pdf": {
+    "mtime": 1793806289.487759,
+    "seen": 1794331304.2433321,
+    "ast_hash": "4acb12fb3ccbc06247e17789a63c1d51",
+    "semantic_hash": "4acb12fb3ccbc06247e17789a63c1d51"
+  },
+  "course_material/Report_template.pdf": {
+    "mtime": 1793806267.8871112,
+    "seen": 1794331304.2433321,
+    "ast_hash": "d50c9e06b59c26824000363fc6530705",
+    "semantic_hash": "d50c9e06b59c26824000363fc6530705"
   }
 }

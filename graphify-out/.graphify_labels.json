@@ -1,16 +1,1 @@
-{
-  "0": "XAI Theory and PFI",
-  "1": "Validation Protocols and Leakage",
-  "2": "ECG Preprocessing Lecture",
-  "4": "Class Balance and Test Sets",
-  "6": "Preprocessed Beat Classes",
-  "7": "Report Template and Marking",
-  "9": "RF Patient Hold-out Results",
-  "10": "SVM Beat Hold-out Results",
-  "11": "SVM Patient Hold-out Results",
-  "12": "Raw ECG Signal Record 234",
-  "13": "RF Beat Hold-out Results",
-  "14": "Beat Window and Morphology",
-  "15": "Dataset Class Imbalance",
-  "17": "Graphify Tooling"
-}
+{"0": "Submission Pipeline & Setup", "1": "Shared PermFIT Code", "2": "Report Findings", "3": "LIME & SHAP Lecture", "4": "Case Study Brief", "5": "Explainability Lecture", "6": "Interpretable Model Types", "7": "Marking & Template", "8": "Perturbation Method Comparison", "9": "RF Patient PermFIT", "10": "Beat Class Examples", "11": "RF Beat PermFIT", "12": "SVM Patient PermFIT", "13": "SVM Patient Confusion", "14": "RF Patient Confusion", "15": "PermFIT Comparison Grid", "16": "RF Beat Confusion", "17": "SVM Beat Confusion", "18": "SVM vs RF Profiles", "19": "SVM Beat PermFIT", "20": "Task 3 Confusion Matrix", "21": "Class Imbalance", "22": "Graphify Tooling"}

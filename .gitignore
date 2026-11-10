@@ -1,20 +1,26 @@
-# Python environment
+# Python
 .venv/
 __pycache__/
 .ipynb_checkpoints/
 
-# Raw MIT-BIH data (download from https://physionet.org/content/mitdb/1.0.0/)
+# Raw MIT-BIH data (downloaded automatically by Final_Submission/walkthrough.ipynb)
 mitbih/
 
-# Generated data (recreate by running the notebooks)
+# Generated data (about 1.2 GB, rebuilt by the data notebooks)
 data/
 *.csv
-
-.DS_Store
-
-# Final_Submission: local links to the big data folders (not submitted)
-Final_Submission/data
-Final_Submission/mitbih
 # keep the small result tables
 !Final_Submission/results/*.csv
+
+# Local links from Final_Submission to the data folders above
+Final_Submission/data
+Final_Submission/mitbih
+
+# Submission zip (made by make_submission_zip.sh)
 Final_Submission.zip
+
+# graphify cache (local, rebuilt automatically)
+graphify-out/cache/
+
+# OS files
+.DS_Store

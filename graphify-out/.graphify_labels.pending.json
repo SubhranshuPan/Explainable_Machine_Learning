@@ -1,9 +1,8 @@
 {
-  "3": "PermFIT algorithm (Algorithm 1, K-fold cross-fitted permutation importance)",
-  "5": "Final_Submission/ecg_utils.py",
-  "8": "task5_compare_classifiers.py",
-  "16": "numpy",
+  "0": "make_submission_zip.sh",
+  "1": "ECG Explainability Project Master Log & Progress Tracker",
+  "5": "ecg_utils.py",
+  "8": "task4_permfit.py",
   "18": "ECG Arrhythmia Classification and Explainability (MIT-BIH)",
-  "19": "run_all.sh script",
-  "20": "src/ecg_utils.py"
+  "19": "tune_hyperparameters.py"
 }

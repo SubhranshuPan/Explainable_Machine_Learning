@@ -1,17 +1,17 @@
 # Graph Report - Explainable_Machine_Learning  (2026-11-10)
 
 ## Corpus Check
-- 20 files · ~6,324 words
+- 20 files · ~6,925 words
 - Verdict: corpus is large enough that graph structure adds value.
-- Unclassified: 14 file(s) not represented in the graph (top: .ipynb 5, .csv 4, .npz 4)
+- Unclassified: 17 file(s) not represented in the graph (top: .ipynb 6, .csv 4, .npz 4)
 
 ## Summary
-- 294 nodes · 440 edges · 19 communities (18 shown, 1 thin omitted)
-- Extraction: 74% EXTRACTED · 25% INFERRED · 1% AMBIGUOUS · INFERRED: 112 edges (avg confidence: 0.83)
+- 302 nodes · 473 edges · 21 communities (19 shown, 2 thin omitted)
+- Extraction: 75% EXTRACTED · 24% INFERRED · 1% AMBIGUOUS · INFERRED: 115 edges (avg confidence: 0.84)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `63127f62`
+- Built from commit: `8ea8edb4`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -21,7 +21,7 @@
 - ECG Preprocessing Lecture
 - PermFIT algorithm (Algorithm 1, K-fold cross-fitted permutation importance)
 - Class Balance and Test Sets
-- numpy
+- Final_Submission/ecg_utils.py
 - Preprocessed Beat Classes
 - Report Template and Marking
 - task5_compare_classifiers.py
@@ -32,9 +32,11 @@
 - RF Beat Hold-out Results
 - Beat Window and Morphology
 - Dataset Class Imbalance
-- SHAP Attribution Properties
+- numpy
 - Graphify Tooling
 - ECG Arrhythmia Classification and Explainability (MIT-BIH)
+- run_all.sh script
+- src/ecg_utils.py
 
 ## God Nodes (most connected - your core abstractions)
 1. `Local Interpretable Model-agnostic Explanations (LIME)` - 18 edges
@@ -46,19 +48,19 @@
 7. `Phase A: Data ingestion & preprocessing (48 records, 149,768 beats, R-peak at index 137, length 275)` - 8 edges
 8. `ECG Explainability Project Master Log & Progress Tracker` - 8 edges
 9. `run_all.sh script` - 7 edges
-10. `ECG Data Pre-processing Pipeline` - 7 edges
+10. `run_permfit()` - 7 edges
 
 ## Surprising Connections (you probably didn't know these)
+- `Load hold-out CSVs into NumPy arrays (e.g. 31920x275 train, 37863x275 test)` --implements--> `load_split()`  [INFERRED]
+  explainability_machineLearning.pdf → src/ecg_utils.py
+- `Split CSVs: train_beats.csv, test_beats.csv, train_patients.csv, test_patients.csv` --shares_data_with--> `load_split()`  [INFERRED]
+  README.md → src/ecg_utils.py
 - `Evaluation function: accuracy, precision, recall, F1, confusion matrix` --implements--> `evaluate()`  [INFERRED]
   explainability_machineLearning.pdf → src/ecg_utils.py
 - `Notebook pipeline: data_preprocess -> data_split_resample -> classification` --references--> `evaluate()`  [INFERRED]
   README.md → src/ecg_utils.py
-- `Load hold-out CSVs into NumPy arrays (e.g. 31920x275 train, 37863x275 test)` --implements--> `load_split()`  [INFERRED]
-  explainability_machineLearning.pdf → src/ecg_utils.py
 - `One-hot encoding of heartbeat class labels` --implements--> `one_hot()`  [INFERRED]
   explainability_machineLearning.pdf → src/ecg_utils.py
-- `LIME surrogate optimisation & SHAP game-theoretic axioms` --semantically_similar_to--> `Permutation feature importance`  [INFERRED] [semantically similar]
-  README.md → explainability_machineLearning.pdf
 
 ## Import Cycles
 - None detected.
@@ -80,19 +82,19 @@
 - **SVM Patient Hold-out Evaluation Results** — figures_cm_svm_patient_svm_classifier, figures_cm_svm_patient_patient_hold_out, figures_cm_svm_patient_fusion_beat_confusion, figures_cm_svm_patient_strong_n_v_paced, figures_cm_svm_patient_absent_test_classes [INFERRED 0.85]
 - **Report structure aligned with marking rubric (Intro/Methods/Results/Discussion)** — report_template_introduction_section, report_template_methods_section, report_template_results_section, report_template_discussion_section, marking_sheet_introduction_criterion, marking_sheet_methods_criterion, marking_sheet_results_criterion, marking_sheet_discussion_criterion [INFERRED 0.95]
 
-## Communities (19 total, 1 thin omitted)
+## Communities (21 total, 2 thin omitted)
 
 ### Community 0 - "XAI Theory and PFI"
-Cohesion: 0.08
-Nodes (29): Arrieta et al. 2020 - Explainable Artificial Intelligence (XAI): Concepts, taxonomies, opportunities and challenges (Information Fusion), Convolutional Neural Networks, Decision Trees, Explainability in Machine Learning Lecture Slides, Dr. Fani Deligianni (University of Glasgow), Global Explanations, Linear Regression, Logistic Regression (+21 more)
+Cohesion: 0.07
+Nodes (34): Arrieta et al. 2020 - Explainable Artificial Intelligence (XAI): Concepts, taxonomies, opportunities and challenges (Information Fusion), Convolutional Neural Networks, Decision Trees, Explainability in Machine Learning Lecture Slides, Dr. Fani Deligianni (University of Glasgow), Global Explanations, Linear Regression, Logistic Regression (+26 more)
 
 ### Community 1 - "Validation Protocols and Leakage"
 Cohesion: 0.07
-Nodes (41): Beat hold-out validation protocol (75/25 split), Class imbalance in MIT-BIH (dominant N beats), Apply same explainability technique to different classifiers and discuss, Clustering task: visualize class separation, classify on cluster features, Load hold-out CSVs into NumPy arrays (e.g. 31920x275 train, 37863x275 test), Dual-channel beat extraction and stacking, Pre-processing of ECG data for arrhythmia detection (coursework handout), Eight arrhythmia beat classes (N, L, R, V, A, F, f, /) and class IDs 1-8 (+33 more)
+Nodes (39): Beat hold-out validation protocol (75/25 split), Class imbalance in MIT-BIH (dominant N beats), Apply same explainability technique to different classifiers and discuss, Clustering task: visualize class separation, classify on cluster features, Load hold-out CSVs into NumPy arrays (e.g. 31920x275 train, 37863x275 test), Dual-channel beat extraction and stacking, Pre-processing of ECG data for arrhythmia detection (coursework handout), Eight arrhythmia beat classes (N, L, R, V, A, F, f, /) and class IDs 1-8 (+31 more)
 
 ### Community 2 - "ECG Preprocessing Lecture"
-Cohesion: 0.11
-Nodes (21): Eight Arrhythmia Beat Classes (N, L, R, V, A, F, f, /), Coursework Assessment Tasks, Beat Standardization, Clustering for Data Structure Visualization, Segmentation into Individual ECG Beats, ECG Data Pre-processing Pipeline, ECG Noise Filtering, ECG Noise Interference (Baseline Wander, Electrode Contact, Motion Artifacts, Power Line) (+13 more)
+Cohesion: 0.12
+Nodes (20): Eight Arrhythmia Beat Classes (N, L, R, V, A, F, f, /), Coursework Assessment Tasks, Beat Standardization, Clustering for Data Structure Visualization, Segmentation into Individual ECG Beats, ECG Data Pre-processing Pipeline, ECG Noise Filtering, ECG Noise Interference (Baseline Wander, Electrode Contact, Motion Artifacts, Power Line) (+12 more)
 
 ### Community 3 - "PermFIT algorithm (Algorithm 1, K-fold cross-fitted permutation importance)"
 Cohesion: 0.21
@@ -102,21 +104,21 @@ Nodes (10): Arrhythmia, ECG morphology: P-wave, QRS complex, T-wave, ECG noise s
 Cohesion: 0.12
 Nodes (18): Balanced Training Set (3874 beats per class), Class Balancing via Resampling, Test Beats Class-Count Bar Chart, Class Imbalance (N-dominant, F rarest), MIT-BIH 8 Beat Classes (N, L, R, V, A, F, f, /), Test Set Beat Class Distribution, Test Patients Beat Class Count Bar Chart, Test Patients Class Distribution (N 9363, V 1087, F 387, f 1138, / 2507; total 14482) (+10 more)
 
-### Community 5 - "numpy"
-Cohesion: 0.07
-Nodes (10): compute_permfit_ecg(), evaluate(), load_split(), make_model(), one_hot(), perturb_slice(), plot_permfit_importance(), evaluate() (+2 more)
+### Community 5 - "Final_Submission/ecg_utils.py"
+Cohesion: 0.11
+Nodes (5): compute_permfit_ecg(), load_split(), make_model(), one_hot(), perturb_slice()
 
 ### Community 6 - "Preprocessed Beat Classes"
 Cohesion: 0.26
 Nodes (12): Preprocessed ECG Beat Examples (8 classes), Per-beat amplitude standardisation (z-score), Fixed-length R-peak-centred beat window (~275 samples), Class A (Atrial premature beat), Class f (Fusion of paced and normal beat), Class F (Fusion of ventricular and normal beat), Class L (Left bundle branch block beat), Class N (Normal beat) (+4 more)
 
 ### Community 7 - "Report Template and Marking"
-Cohesion: 0.27
-Nodes (10): Marking: Discussion (20 points), Marking: Introduction (10 points), Case study marking sheet (100 points), Marking: Methods (15 points), Marking: Results incl. experiment rationale (40 points), Report Discussion: conclusions and why, Report Introduction: case study and predictive/exploratory question, Report Methods: main idea and parameters to tune (+2 more)
+Cohesion: 0.24
+Nodes (11): Marking: Code implementation - clarity, documentation, reproducibility (15 points), Marking: Discussion (20 points), Marking: Introduction (10 points), Case study marking sheet (100 points), Marking: Methods (15 points), Marking: Results incl. experiment rationale (40 points), Report Discussion: conclusions and why, Report Introduction: case study and predictive/exploratory question (+3 more)
 
 ### Community 8 - "task5_compare_classifiers.py"
-Cohesion: 0.13
-Nodes (4): MPLBACKEND, run_all.sh script, run_permfit(), tag()
+Cohesion: 0.15
+Nodes (8): run_permfit(), tag(), classify_all(), load_permfit(), permfit_rf(), plot_grid(), save_permfit_tables(), summary_table()
 
 ### Community 9 - "RF Patient Hold-out Results"
 Cohesion: 0.43
@@ -146,13 +148,17 @@ Nodes (5): Example Heartbeat of Each Class (figure), Per-beat Amplitude Standard
 Cohesion: 0.83
 Nodes (4): Beat Class Counts - All Data (bar chart), Severe Class Imbalance (N-dominated), MIT-BIH Arrhythmia Database, MIT-BIH 8 Beat Classes (N, L, R, V, A, F, f, /)
 
-### Community 16 - "SHAP Attribution Properties"
-Cohesion: 0.50
-Nodes (4): Additive Feature Attribution Methods, Consistency Property, Local Accuracy Property, Missingness Property
+### Community 16 - "numpy"
+Cohesion: 0.22
+Nodes (6): evaluate(), plot_permfit_importance(), evaluate_model(), plot_perturbation_methods(), plot_profiles(), evaluate_model()
 
 ### Community 18 - "ECG Arrhythmia Classification and Explainability (MIT-BIH)"
 Cohesion: 0.29
 Nodes (6): Contributions, ECG Arrhythmia Classification and Explainability (MIT-BIH), Files, How to run, Key settings, Notes on the data pipeline
+
+### Community 20 - "src/ecg_utils.py"
+Cohesion: 0.22
+Nodes (3): evaluate(), load_split(), one_hot()
 
 ## Ambiguous Edges - Review These
 - `Shapley Additive Explanations (SHAP)` → `11-Segment ECG Beat Slicing (Segment Averaging)`  [AMBIGUOUS]
@@ -163,23 +169,23 @@ Nodes (6): Contributions, ECG Arrhythmia Classification and Explainability (MIT-
   figures/ecg_data_preprocessed.jpg · relation: conceptually_related_to
 
 ## Knowledge Gaps
-- **39 isolated node(s):** `MPLBACKEND`, `LIME Tabular Explainer`, `LIME Text Explainer`, `Locally Linear Surrogate Model`, `Mi et al. 2021 - Permutation-based identification of important biomarkers for complex diseases via machine learning models (Nature Communications)` (+34 more)
-  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 77 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
-- **1 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **39 isolated node(s):** `MPLBACKEND`, `LIME Tabular Explainer`, `LIME Text Explainer`, `Locally Linear Surrogate Model`, `Arrieta et al. 2020 - Explainable Artificial Intelligence (XAI): Concepts, taxonomies, opportunities and challenges (Information Fusion)` (+34 more)
+  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 74 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
+- **2 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `evaluate()` connect `numpy` to `Validation Protocols and Leakage`?**
-  _High betweenness centrality (0.068) - this node is a cross-community bridge._
+- **Why does `evaluate()` connect `src/ecg_utils.py` to `numpy`, `Validation Protocols and Leakage`?**
+  _High betweenness centrality (0.073) - this node is a cross-community bridge._
 - **Are the 3 inferred relationships involving `Local Interpretable Model-agnostic Explanations (LIME)` (e.g. with `Post-hoc Surrogate Model Explanations` and `Ribeiro et al. 2016 - "Why Should I Trust You?": Explaining the Predictions of Any Classifier (KDD)`) actually correct?**
   _`Local Interpretable Model-agnostic Explanations (LIME)` has 3 INFERRED edges - model-reasoned connections that need verification._
 - **What connects `MPLBACKEND`, `LIME Tabular Explainer`, `LIME Text Explainer` to the rest of the system?**
   _39 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `XAI Theory and PFI` be split into smaller, more focused modules?**
-  _Cohesion score 0.08246225319396051 - nodes in this community are weakly interconnected._
-- **Why does `Notebook pipeline: data_preprocess -> data_split_resample -> classification` connect `Validation Protocols and Leakage` to `numpy`?**
-  _High betweenness centrality (0.043) - this node is a cross-community bridge._
+  _Cohesion score 0.06887755102040816 - nodes in this community are weakly interconnected._
+- **Why does `How to reproduce (venv, MIT-BIH download, nbconvert notebook pipeline)` connect `Validation Protocols and Leakage` to `Report Template and Marking`?**
+  _High betweenness centrality (0.050) - this node is a cross-community bridge._
 
 ### Low-confidence Hints
 _AMBIGUOUS edges — the extractor was unsure. Verify before acting on these._

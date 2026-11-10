@@ -7,24 +7,90 @@ models rely on. The same analysis is repeated with a Random Forest for compariso
 
 The report is `Report.docx` (also exported as `Report.pdf`).
 
-**Quick tour:** open `walkthrough.ipynb`. It runs Tasks 1–5 in order with short explanations, and its
-outputs (all plots and tables) are saved, so it can be read without running anything.
+**Quick tour:** open `walkthrough.ipynb`. It contains all the code of Tasks 1–5 in order, with short
+explanations. Its outputs (all plots and tables) are saved, so it can be read without running anything.
 
-## How to run
+## How to run the notebook
+
+**You need:** Python 3.10 or newer ([python.org](https://www.python.org/downloads/)), about 2 GB of free disk
+space, 8 GB of RAM, and an internet connection for the first run. The raw data is not in the zip; the
+notebook downloads it.
+
+### 1. Unzip and open a terminal in the folder
+
+Unzip `Final_Submission.zip`, open a terminal (macOS/Linux: *Terminal*; Windows: *PowerShell*) and go into
+the folder:
 
 ```bash
-python3 -m venv .venv && .venv/bin/pip install -r requirements.txt
-# put the 48 MIT-BIH records (.dat/.hea/.atr) from https://physionet.org/content/mitdb/1.0.0/ in ./mitbih/
-PYTHON=.venv/bin/python bash run_all.sh
+cd path/to/Final_Submission
 ```
 
-To run the notebooks instead, open them with the `.venv` environment as the kernel (VS Code / Jupyter:
-*Select Kernel*). The first cell of `walkthrough.ipynb` checks the environment and builds `data/` from
-`mitbih/` if it is missing.
+### 2. Create a Python environment and install the packages (once, about 3 minutes)
 
-Run all commands from this folder. `run_all.sh` runs the steps below in order. Every
-random step uses seed 42, so a rerun gives the same numbers. The slowest step is
-Task 4: the SVM is refitted in 5 folds, about 20–40 minutes on a laptop.
+macOS / Linux:
+
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+python -m pip install -r requirements.txt
+```
+
+Windows (PowerShell):
+
+```powershell
+py -m venv .venv
+.venv\Scripts\activate
+python -m pip install -r requirements.txt
+```
+
+### 3. Open the notebook with that environment
+
+Either **Jupyter in the browser**: with the environment still active (step 2), run
+
+```bash
+jupyter notebook walkthrough.ipynb
+```
+
+and choose *Run ▸ Run All Cells*.
+
+Or **VS Code** (with the *Python* and *Jupyter* extensions): *File ▸ Open Folder* ▸ `Final_Submission`, open
+`walkthrough.ipynb`, click *Select Kernel* (top right) ▸ *Python Environments* ▸ `.venv`, then *Run All*.
+
+### 4. What happens on the first run
+
+The first code cell prepares everything, which takes about 5 minutes:
+1. it downloads the 48 MIT-BIH records from PhysioNet into `mitbih/` (about 100 MB);
+2. it builds `data/` (about 1.2 GB) by running `00_preprocess.ipynb` and `01_split_resample.ipynb`.
+
+It prints `Setup OK`. The rest of the notebook takes about 3 minutes. Later runs skip both steps.
+
+PermFIT is slow (about 1.5 hours), so by default the notebook loads its saved results from `results/`. To
+recompute them, set `RUN_PERMFIT = True` in the second code cell.
+
+### Troubleshooting
+
+| Problem | Fix |
+|---|---|
+| `Missing packages ...` or `ModuleNotFoundError` | The notebook is using a different Python. Select the `.venv` kernel (step 3), or activate the environment before starting `jupyter notebook`. |
+| `python3` / `py` not found | Install Python from python.org. On Windows, tick *Add python.exe to PATH* during installation. |
+| PowerShell blocks `activate` | Run `Set-ExecutionPolicy -Scope CurrentUser RemoteSigned` once, or skip activating and use `.venv\Scripts\python -m pip install -r requirements.txt`. |
+| `Open this notebook from inside the Final_Submission folder` | Start Jupyter or VS Code in this folder, not in a parent folder. |
+| The download fails (no internet or firewall) | Download the ZIP from <https://physionet.org/content/mitdb/1.0.0/>, unzip it, and put the 48 `.dat`, `.hea` and `.atr` files directly in a folder `mitbih/` inside this folder. Then run again. |
+
+With the package versions we used (Python 3.14, scikit-learn 1.9, NumPy 2.5), the numbers match the report
+exactly. Other versions can change the last digits.
+
+## Rerun everything from the scripts (optional)
+
+`run_all.sh` runs the same steps as the notebook with the `.py` files, and also recomputes PermFIT for the
+SVM (about 40 minutes in total). macOS / Linux, from this folder with the environment active:
+
+```bash
+bash run_all.sh
+```
+
+It downloads the data if `mitbih/` is empty. Every random step uses seed 42, so a rerun gives the same
+numbers.
 
 ## Files
 

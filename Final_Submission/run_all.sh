@@ -7,6 +7,11 @@ mkdir -p data figures results
 export MPLBACKEND=Agg
 PY=${PYTHON:-python3}
 
+if [ "$(ls mitbih/*.dat 2>/dev/null | wc -l)" -lt 48 ]; then
+    echo "== Downloading the MIT-BIH database from PhysioNet into mitbih/ (about 100 MB) =="
+    $PY -c "import wfdb; wfdb.dl_database('mitdb', 'mitbih')"
+fi
+
 echo "== Data preparation (notebooks provided by the course, with fixes) =="
 $PY -m jupyter nbconvert --to notebook --execute --inplace 00_preprocess.ipynb
 $PY -m jupyter nbconvert --to notebook --execute --inplace 01_split_resample.ipynb
