@@ -11,3 +11,9 @@ data/
 *.csv
 
 .DS_Store
+
+# Final_Submission: local links to the big data folders (not submitted)
+Final_Submission/data
+Final_Submission/mitbih
+# keep the small result tables
+!Final_Submission/results/*.csv

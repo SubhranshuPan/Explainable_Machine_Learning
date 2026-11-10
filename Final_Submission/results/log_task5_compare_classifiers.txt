@@ -1,0 +1,105 @@
+=== SVM - beat hold-out ===
+Accuracy: 0.9384
+
+class precision  recall     f1  support
+    N     0.996   0.927  0.960    28474
+    L     0.983   0.994  0.989     1636
+    R     0.996   0.992  0.994     2581
+    V     0.715   0.940  0.812     1307
+    A     0.519   0.893  0.656      783
+    F     0.172   0.932  0.291      191
+    f     0.730   0.950  0.825      416
+    /     0.993   0.993  0.993     2054
+
+Macro (classes present): precision=0.763 recall=0.953 f1=0.815
+
+=== Random Forest - beat hold-out ===
+Accuracy: 0.9677
+
+class precision  recall     f1  support
+    N     0.996   0.965  0.980    28474
+    L     0.979   0.999  0.989     1636
+    R     0.991   0.990  0.991     2581
+    V     0.740   0.964  0.837     1307
+    A     0.631   0.899  0.741      783
+    F     0.607   0.890  0.722      191
+    f     0.862   0.930  0.895      416
+    /     0.990   0.994  0.992     2054
+
+Macro (classes present): precision=0.850 recall=0.954 f1=0.893
+
+=== SVM - patient hold-out ===
+Accuracy: 0.8659
+
+class precision  recall     f1  support
+    N     0.955   0.931  0.942     9363
+    L     0.000   0.000  0.000        0   (not in test set)
+    R     0.000   0.000  0.000        0   (not in test set)
+    V     0.655   0.975  0.783     1087
+    A     0.000   0.000  0.000        0   (not in test set)
+    F     0.751   0.452  0.565      387
+    f     0.910   0.125  0.219     1138
+    /     0.945   0.977  0.961     2507
+
+Macro (classes present): precision=0.843 recall=0.692 f1=0.694
+
+=== Random Forest - patient hold-out ===
+Accuracy: 0.8356
+
+class precision  recall     f1  support
+    N     0.943   0.910  0.926     9363
+    L     0.000   0.000  0.000        0   (not in test set)
+    R     0.000   0.000  0.000        0   (not in test set)
+    V     0.626   0.990  0.767     1087
+    A     0.000   0.000  0.000        0   (not in test set)
+    F     0.500   0.003  0.005      387
+    f     1.000   0.004  0.007     1138
+    /     0.888   0.998  0.940     2507
+
+Macro (classes present): precision=0.791 recall=0.581 f1=0.529
+
+
+[Random Forest | beat hold-out] PermFIT on 30992 training beats
+  fold 1/5: train 24793, test 6199, accuracy 0.985
+  fold 2/5: train 24793, test 6199, accuracy 0.983
+  fold 3/5: train 24794, test 6198, accuracy 0.983
+  fold 4/5: train 24794, test 6198, accuracy 0.985
+  fold 5/5: train 24794, test 6198, accuracy 0.982
+  done in 1.6 min
+  slices ranked by importance (shuffle): [6, 7, 5, 4, 8, 3, 1, 10, 9, 11, 2]
+
+[Random Forest | patient hold-out] PermFIT on 35384 training beats
+  fold 1/5: train 28307, test 7077, accuracy 0.984
+  fold 2/5: train 28307, test 7077, accuracy 0.985
+  fold 3/5: train 28307, test 7077, accuracy 0.989
+  fold 4/5: train 28307, test 7077, accuracy 0.986
+  fold 5/5: train 28308, test 7076, accuracy 0.988
+  done in 1.7 min
+  slices ranked by importance (shuffle): [6, 7, 5, 8, 4, 3, 10, 9, 11, 1, 2]
+
+Classification results
+         model         protocol  accuracy  macro_precision  macro_recall  macro_f1
+          SVM    beat hold-out     0.938            0.763         0.953     0.815
+          SVM patient hold-out     0.866            0.843         0.692     0.694
+Random Forest    beat hold-out     0.968            0.850         0.954     0.893
+Random Forest patient hold-out     0.836            0.791         0.581     0.529
+
+PermFIT importance (shuffle within slice)
+ model    Random Forest                            SVM                 
+protocol beat hold-out patient hold-out beat hold-out patient hold-out
+slice                                                                 
+1               0.0089           0.0052        0.0093           0.0137
+2               0.0020           0.0023        0.0003           0.0014
+3               0.0111           0.0085        0.0012           0.0035
+4               0.0270           0.0153        0.0030           0.0039
+5               0.0303           0.0339        0.0250           0.0990
+6               0.3654           0.3572        1.0402           0.3703
+7               0.0926           0.0786        0.1762           0.0627
+8               0.0250           0.0298        0.0069           0.0016
+9               0.0077           0.0068       -0.0001          -0.0001
+10              0.0089           0.0070       -0.0007           0.0011
+11              0.0048           0.0058        0.0022           0.0032
+SVM           beat hold-out     PermFIT CV baseline accuracy 0.958  top-3 slices [6, 7, 5]
+SVM           patient hold-out  PermFIT CV baseline accuracy 0.977  top-3 slices [6, 5, 7]
+Random Forest beat hold-out     PermFIT CV baseline accuracy 0.983  top-3 slices [6, 7, 5]
+Random Forest patient hold-out  PermFIT CV baseline accuracy 0.986  top-3 slices [6, 7, 5]

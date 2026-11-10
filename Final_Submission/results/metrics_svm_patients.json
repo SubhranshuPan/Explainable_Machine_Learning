@@ -1,0 +1,7 @@
+{
+  "model": "SVM - patient hold-out",
+  "accuracy": 0.8659024996547439,
+  "macro_precision": 0.8431579782908862,
+  "macro_recall": 0.6919374161174382,
+  "macro_f1": 0.6941330717604716
+}

@@ -1,0 +1,8 @@
+model,params,cv_macro_f1,std
+SVM,{'C': 1},0.928,0.002
+SVM,{'C': 10},0.955,0.003
+SVM,{'C': 100},0.96,0.001
+Random Forest,"{'max_features': 'sqrt', 'min_samples_leaf': 1}",0.954,0.001
+Random Forest,"{'max_features': 'sqrt', 'min_samples_leaf': 3}",0.95,0.004
+Random Forest,"{'max_features': 0.1, 'min_samples_leaf': 1}",0.954,0.001
+Random Forest,"{'max_features': 0.1, 'min_samples_leaf': 3}",0.95,0.003

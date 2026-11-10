@@ -1,0 +1,24 @@
+/Users/bravewolf03/Documents/Explainable_Machine_Learning/Final_Submission/task1.py:34: UserWarning: FigureCanvasAgg is non-interactive, and thus cannot be shown
+  plt.show()
+/Users/bravewolf03/Documents/Explainable_Machine_Learning/Final_Submission/task1.py:55: UserWarning: FigureCanvasAgg is non-interactive, and thus cannot be shown
+  plt.show()
+Data shape: (149768, 277)
+First five rows:
+[[ 1.080076e+00  1.080076e+00  1.080076e+00 ... -2.369180e-01
+   1.000000e+00  1.000000e+02]
+ [ 1.619185e+00  1.451040e-01  1.968260e-01 ...  6.752100e-02
+   1.000000e+00  1.000000e+02]
+ [ 1.878227e+00  9.147700e-02  6.394000e-03 ...  1.198390e-01
+   1.000000e+00  1.000000e+02]
+ [ 1.997797e+00 -3.058800e-02 -7.590000e-04 ...  2.080450e-01
+   1.000000e+00  1.000000e+02]
+ [ 2.129467e+00  1.732490e-01  4.704100e-02 ...  3.310080e-01
+   1.000000e+00  1.000000e+02]]
+Class N : 113682
+Class L : 6568
+Class R : 10471
+Class V : 5251
+Class A : 3127
+Class F : 813
+Class f : 1627
+Class / : 8229

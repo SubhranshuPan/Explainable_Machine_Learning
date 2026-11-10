@@ -1,0 +1,18 @@
+
+[SVM | beat hold-out] PermFIT on 30992 training beats
+  fold 1/5: train 24793, test 6199, accuracy 0.959
+  fold 2/5: train 24793, test 6199, accuracy 0.957
+  fold 3/5: train 24794, test 6198, accuracy 0.955
+  fold 4/5: train 24794, test 6198, accuracy 0.959
+  fold 5/5: train 24794, test 6198, accuracy 0.959
+  done in 16.2 min
+  slices ranked by importance (shuffle): [6, 7, 5, 1, 8, 4, 11, 3, 2, 9, 10]
+
+[SVM | patient hold-out] PermFIT on 35384 training beats
+  fold 1/5: train 28307, test 7077, accuracy 0.975
+  fold 2/5: train 28307, test 7077, accuracy 0.976
+  fold 3/5: train 28307, test 7077, accuracy 0.980
+  fold 4/5: train 28307, test 7077, accuracy 0.976
+  fold 5/5: train 28308, test 7076, accuracy 0.977
+  done in 17.0 min
+  slices ranked by importance (shuffle): [6, 5, 7, 1, 4, 3, 11, 8, 2, 10, 9]

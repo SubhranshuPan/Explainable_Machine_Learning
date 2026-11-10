@@ -1,0 +1,7 @@
+{
+  "model": "SVM - beat hold-out",
+  "accuracy": 0.9383579936969179,
+  "macro_precision": 0.7629288377649452,
+  "macro_recall": 0.9526771029685397,
+  "macro_f1": 0.815065591897361
+}

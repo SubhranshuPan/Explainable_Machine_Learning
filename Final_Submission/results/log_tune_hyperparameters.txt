@@ -1,0 +1,2 @@
+SVM: best {'C': 100}  CV macro-F1 = 0.960
+Random Forest: best {'max_features': 0.1, 'min_samples_leaf': 1}  CV macro-F1 = 0.954

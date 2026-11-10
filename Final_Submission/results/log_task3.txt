@@ -1,0 +1,6 @@
+/Users/bravewolf03/Documents/Explainable_Machine_Learning/Final_Submission/task3.py:94: UserWarning: FigureCanvasAgg is non-interactive, and thus cannot be shown
+  plt.show()
+Accuracy: 0.8659024996547439
+Precision: 0.8431579782908862
+Recall: 0.6919374161174382
+F1-score: 0.6941330717604716

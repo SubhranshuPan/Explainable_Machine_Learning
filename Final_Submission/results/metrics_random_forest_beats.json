@@ -1,0 +1,7 @@
+{
+  "model": "Random Forest - beat hold-out",
+  "accuracy": 0.9677100582233855,
+  "macro_precision": 0.8495866458075014,
+  "macro_recall": 0.953921863731466,
+  "macro_f1": 0.8934305498535539
+}

@@ -1,0 +1,7 @@
+{
+  "model": "Random Forest - patient hold-out",
+  "accuracy": 0.835589007043226,
+  "macro_precision": 0.7913871325910236,
+  "macro_recall": 0.580805626970574,
+  "macro_f1": 0.5290160767368235
+}
