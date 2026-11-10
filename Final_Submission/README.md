@@ -7,6 +7,9 @@ models rely on. The same analysis is repeated with a Random Forest for compariso
 
 The report is `Report.docx` (also exported as `Report.pdf`).
 
+**Quick tour:** open `walkthrough.ipynb`. It runs Tasks 1–5 in order with short explanations, and its
+outputs (all plots and tables) are saved, so it can be read without running anything.
+
 ## How to run
 
 ```bash
@@ -14,6 +17,10 @@ python3 -m venv .venv && .venv/bin/pip install -r requirements.txt
 # put the 48 MIT-BIH records (.dat/.hea/.atr) from https://physionet.org/content/mitdb/1.0.0/ in ./mitbih/
 PYTHON=.venv/bin/python bash run_all.sh
 ```
+
+To run the notebooks instead, open them with the `.venv` environment as the kernel (VS Code / Jupyter:
+*Select Kernel*). The first cell of `walkthrough.ipynb` checks the environment and builds `data/` from
+`mitbih/` if it is missing.
 
 Run all commands from this folder. `run_all.sh` runs the steps below in order. Every
 random step uses seed 42, so a rerun gives the same numbers. The slowest step is
@@ -25,6 +32,7 @@ Task 4: the SVM is refitted in 5 folds, about 20–40 minutes on a laptop.
 |---|---|---|
 | `00_preprocess.ipynb` | data | Raw MIT-BIH → one standardised 275-sample beat per row, R-peak centred (`data/all_data.csv`) |
 | `01_split_resample.ipynb` | data | Beat hold-out (75/25) and patient hold-out splits, class re-sampling of the training sets |
+| `walkthrough.ipynb` | 1–5 | Runs every task in order with explanations; outputs saved (PermFIT loaded from `results/` unless `RUN_PERMFIT = True`) |
 | `task1.py` | 1 | Example beat per class and class distribution |
 | `task2_svm.py` | 2 | SVM, beat hold-out: accuracy, precision, recall, F1, confusion matrix |
 | `task3.py` | 3 | SVM, patient hold-out (records 104, 113, 119, 208, 210 held out) |
