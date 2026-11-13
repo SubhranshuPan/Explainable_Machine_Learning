@@ -5,7 +5,7 @@ SVM, testing on random beats (beat hold-out) and on unseen patients (patient hol
 PermFIT permutation feature importance then explains which parts of the heartbeat the
 models rely on. The same analysis is repeated with a Random Forest for comparison.
 
-The report is `Report.docx` (also exported as `Report.pdf`).
+The report is `Report.pdf`.
 
 **Quick tour:** open `walkthrough.ipynb`. It contains all the code of Tasks 1–5 in order, with short
 explanations. Its outputs (all plots and tables) are saved, so it can be read without running anything.
@@ -18,7 +18,7 @@ notebook downloads it.
 
 ### 1. Unzip and open a terminal in the folder
 
-Unzip `Final_Submission.zip`, open a terminal (macOS/Linux: *Terminal*; Windows: *PowerShell*) and go into
+Unzip `GroupH_ECG.zip`, open a terminal (macOS/Linux: *Terminal*; Windows: *PowerShell*) and go into
 the folder:
 
 ```bash

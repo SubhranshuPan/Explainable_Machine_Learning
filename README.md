@@ -16,10 +16,10 @@ figures and the report. Its [README](Final_Submission/README.md) explains how to
 │   ├── 01_split_resample.ipynb  beat / patient hold-out splits and class re-sampling
 │   ├── task1.py … task5_compare_classifiers.py, tune_hyperparameters.py, ecg_utils.py
 │   ├── figures/ results/      every figure and number used in the report
-│   ├── Report.docx  Report.pdf
+│   ├── Report.pdf             the report (LaTeX)
 │   └── README.md  requirements.txt  run_all.sh
 ├── course_material/           case study brief, lecture slides, report template, marking sheet, Delta form
-├── make_submission_zip.sh     builds Final_Submission.zip without the local data folders
+├── make_submission_zip.sh     builds GroupH_ECG.zip without the local data folders
 ├── graphify-out/              code knowledge graph (graphify tool)
 └── CLAUDE.md  .claude/  .vscode/   editor and assistant settings
 ```
@@ -40,7 +40,7 @@ jupyter notebook walkthrough.ipynb      # Run All: downloads the data on the fir
 ## Making the submission zip
 
 ```bash
-./make_submission_zip.sh     # -> Final_Submission.zip (about 5 MB, data folders left out)
+./make_submission_zip.sh     # -> GroupH_ECG.zip (about 5 MB, data folders left out)
 ```
 
 ## Results in one line
